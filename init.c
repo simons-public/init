@@ -32,7 +32,7 @@ void start_ttys()
 	{
 		char cmdline[MAX_CMDLINE_LEN];
 		sprintf(cmdline, CONSOLE_TTY_CMDLINE, i);
-		printf(cmdline);
+		printf("%s\n", cmdline);
 		system(cmdline);
 	}
 }
@@ -45,7 +45,7 @@ void load_modules()
 	while (token != NULL)
 	{
 		sprintf(cmdline, "modprobe %s\n", token);
-		printf(cmdline);
+		printf("%s\n", cmdline);
 		system(cmdline);
 		token = strtok(NULL, " ");
 	}
