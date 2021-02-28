@@ -28,7 +28,7 @@ void mount_fs()
 
 void start_ttys()
 {
-	for (int i=FIRST_CONSOLE_TTY; i <= NUM_CONSOLE_TTYS; i++)
+	for (int i=FIRST_CONSOLE_TTY; i < (FIRST_CONSOLE_TTY + NUM_CONSOLE_TTYS); i++)
 	{
 		char cmdline[MAX_CMDLINE_LEN];
 		sprintf(cmdline, CONSOLE_TTY_CMDLINE, i);
