@@ -32,7 +32,22 @@ void start_ttys()
 	{
 		char cmdline[MAX_CMDLINE_LEN];
 		sprintf(cmdline, CONSOLE_TTY_CMDLINE, i);
+		printf(cmdline);
 		system(cmdline);
+	}
+}
+
+void load_modules()
+{
+	char cmdline[MAX_CMDLINE_LEN];
+	char * token = strtok(MODULES, " ");
+
+	while (token != NULL)
+	{
+		sprintf(cmdline, "modprobe %s\n", token);
+		printf(cmdline);
+		system(cmdline);
+		token = strtok(NULL, " ");
 	}
 }
 
@@ -64,6 +79,9 @@ int main()
 	
 	printf("setting hostname to %s\n", HOSTNAME);
 	sethostname(HOSTNAME, strlen(HOSTNAME));
+
+	printf("loading modules\n");
+	load_modules();
 
 	printf("mounting fs\n");
 	mount_fs();
