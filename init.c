@@ -71,6 +71,6 @@ int main()
 	printf("registering sighup for reboot\n");
 	signal(SIGHUP, reboot_handler);
 
-	printf("running /root/init/rc\n");
-	return execve("/root/init/rc", (char *[]){ "rc", 0 }, (char *[]){ 0 });
+	printf("running %s\n", RC_PATH);
+	return execve(RC_PATH, (char *[]){ "rc", 0 }, (char *[]){ 0 });
 }
